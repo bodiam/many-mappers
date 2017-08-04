@@ -1,0 +1,71 @@
+= Mapper
+
+This is a demo project to test out a few different approaches in mapping objects from on structure to a different structure.
+
+This is useful when you want to build an anticurruption layer, and don't want to expose your DB model to consumers or producers of your app.
+
+Examples for this are:
+
+* Mapping DTOs to a DB model
+* Mapping a DB model to a client model
+* Many other usecases
+
+== Mapping issues
+
+- Simple Mapping of properties which have the same name and type
+  * (Property.reference)
+- Mapping of properties which have the same type but a different name
+  ** (Property.supplier vs Property.supplierCode)
+- Mapping of properties which have the same name but a different type
+  ** (Address.country)
+  ** (Valuation.premium)
+- Deep mapping of same collections
+  ** (Valuation.risks)
+- Mapping of collections to a non collection
+  ** (Valuation.contacts -> Valuation.buyer && Valuation.seller)
+
+- Logic issues, like converting cents to dollars
+  ** (Amount.valueInCents vs Amount.valueInDollars)
+- Date conversion
+  ** (Valuation.dateCreated)
+
+*Ideas - not yet implemented*
+
+- Reference data, like converting country codes to full country names
+- Mapping of non collections to collections
+
+
+== Possible solutions
+
+A few possible solutions are availabe:
+
+- Using frameworks (Dozer, ModelMapper, Orika, etc)
+- Mapping by hand
+- Building your own custom framework
+- Something else.
+
+
+== Solutions built
+
+Current solutions build are:
+
+
+.Demo
+|===
+|Name | Simple | Diff name |Diff type | Deep mapping | Coll to non coll | Non coll to coll |Cents to dollars | Reference data | Date conversion
+
+|By hand | - |- |- |- |- |- |-|-|-
+|Spring PropertyEditors | - |- |- |- |- |- |-|-|-
+|Dozer | - |- |- |- |- |- |-|-|-
+|Orika | - |- |- |- |- |- |-|-|-
+|ModelMapper | - |- |- |- |- |- |-|-|-
+|MapStruct | - |- |- |- |- |- |-|-|-
+
+|===
+
+See https://stackoverflow.com/questions/1432764/any-tool-for-java-object-to-object-mapping
+
+
+== Testing
+
+How to test that all mappings have been correctly applied?
