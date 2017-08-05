@@ -7,7 +7,7 @@ public class ValuationTest {
 
     @Test
     public void testValuation() throws Exception {
-        Valuation valuation = new Valuation();
+
 
 
     }
