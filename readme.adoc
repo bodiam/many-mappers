@@ -55,7 +55,7 @@ Current solutions build are:
 |Name | Simple | Diff name |Diff type | Deep mapping | Coll to non coll | Non coll to coll |Cents to dollars | Reference data | Date conversion
 
 |By hand                   | x | x | x | x | x | x | x | x | x
-|Orika                     | - | - | - | - | - | - | - | - | -
+|Orika                     | x | x | x | x | ! | x | x | x | x // <1>
 |Dozer                     | - | - | - | - | - | - | - | - | -
 |ModelMapper               | - | - | - | - | - | - | - | - | -
 |MapStruct                 | - | - | - | - | - | - | - | - | -
@@ -63,6 +63,8 @@ Current solutions build are:
 |Spring PropertyEditors?   | - | - | - | - | - | - | - | - | -
 
 |===
+<1> Orika doesn't seem to like collection to non-collection mapping. See the note in the test.
+
 
 See https://stackoverflow.com/questions/1432764/any-tool-for-java-object-to-object-mapping
 

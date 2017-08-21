@@ -31,8 +31,8 @@ data class OutputEstimate(
 )
 
 data class OutputAmount(
-        var valueInDollar: BigDecimal? = null,
-        var currency: String? = null
+        var valueInDollar: BigDecimal?,
+        var currency: String?
 )
 
 data class OutputAddress(
