@@ -12,10 +12,9 @@ public class OrikaMapperTest {
     private final OrikaMapper mapper = new OrikaMapper();
 
     @Test
-    public void mapValuation() {
+    public void mapBasicValuation() {
 
         OutputValuation outputValuation = mapper.map(ValuationObjectMother.createBasicValuation());
-
         assertThat(outputValuation).isEqualTo(OutputValuationObjectMother.createBasicValuation());
 
     }
