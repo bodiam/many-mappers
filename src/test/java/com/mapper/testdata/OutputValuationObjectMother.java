@@ -5,8 +5,23 @@ import com.mapper.model.output.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class OutputValuationObjectMother {
+
+    public static OutputValuation createBasicValuation() {
+        return new OutputValuation(
+                "reference",
+                "supplier",
+                "Y",
+                null,
+                LocalDate.of(2010, 10, 3),
+                Collections.emptyList(),
+                null,
+                null
+        );
+    }
+
 
     public static OutputValuation createOutputValuation() {
 

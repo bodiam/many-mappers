@@ -12,9 +12,8 @@ public class ManualMapperTest {
     private final ManualMapper manualMapper = new ManualMapper();
 
     @Test
-    public void mapProperty() {
+    public void mapValuation() {
         OutputValuation mappedValuation = manualMapper.map(ValuationObjectMother.createValuation());
-
         assertThat(mappedValuation).isEqualTo(OutputValuationObjectMother.createOutputValuation());
     }
 

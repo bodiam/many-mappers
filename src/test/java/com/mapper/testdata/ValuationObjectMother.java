@@ -4,12 +4,25 @@ import com.mapper.model.input.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 
 public class ValuationObjectMother {
 
+
+    public static Valuation createBasicValuation() {
+        return new Valuation(
+                "reference",
+                "supplier",
+                Boolean.TRUE,
+                null,
+                LocalDateTime.of(2010, 10, 3, 4, 55),
+                Collections.emptyList(),
+                Collections.emptyList()
+        );
+    }
 
     public static Valuation createValuation() {
         return new Valuation(
