@@ -5,11 +5,14 @@ import com.mapper.model.input.Address;
 import com.mapper.model.input.Property;
 import com.mapper.model.input.Valuation;
 import com.mapper.model.output.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static java.lang.Boolean.TRUE;
 
 public class ManualMapper {
 
@@ -23,22 +26,13 @@ public class ManualMapper {
                 .map(r -> new OutputRisk(r.getName(), r.getValue()))
                 .collect(Collectors.toList());
 
-        OutputContact buyer = valuation.getContacts().stream()
-                .filter(c -> Objects.equals(c.getRole(), "buyer"))
-                .findFirst()
-                .map(x -> new OutputContact(x.getName(), x.getRole()))
-                .get();
+        OutputContact buyer = getByRole(valuation, "buyer");
+        OutputContact seller = getByRole(valuation, "seller");
 
-        OutputContact seller = valuation.getContacts().stream()
-                .filter(c -> Objects.equals(c.getRole(), "seller"))
-                .findFirst()
-                .map(x -> new OutputContact(x.getName(), x.getRole()))
-                .get();
-
-        OutputValuation outputValuation = new OutputValuation(
+        return new OutputValuation(
                 valuation.getReference(),
                 valuation.getSupplier(),
-                valuation.getPremium() == Boolean.TRUE ? "Y" : "N",
+                valuation.getPremium() == TRUE ? "Y" : "N",
                 new OutputProperty(
                         inputProperty.getPropertyType().toString().toLowerCase(),
                         new OutputAddress(
@@ -56,8 +50,13 @@ public class ManualMapper {
                 seller
 
         );
+    }
 
-        outputValuation.setReference(valuation.getReference());
-        return outputValuation;
+    private OutputContact getByRole(Valuation valuation, String role) {
+        return valuation.getContacts().stream()
+                .filter(c -> Objects.equals(c.getRole(), role))
+                .findFirst()
+                .map(x -> new OutputContact(x.getName(), x.getRole()))
+                .orElse(null);
     }
 }
