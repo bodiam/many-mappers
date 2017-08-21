@@ -16,7 +16,7 @@ data class OutputValuation(
 
 data class OutputRisk(
         var name: String? = null,
-        var varue: Int? = null
+        var value: Int? = null
 )
 
 data class OutputProperty(
@@ -31,7 +31,7 @@ data class OutputEstimate(
 )
 
 data class OutputAmount(
-        var varueInDollar: BigDecimal? = null,
+        var valueInDollar: BigDecimal? = null,
         var currency: String? = null
 )
 

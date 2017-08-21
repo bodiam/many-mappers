@@ -1,12 +1,9 @@
 package com.mapper.manual;
 
-import com.mapper.model.input.Address;
-import com.mapper.model.input.Property;
-import com.mapper.model.input.PropertyType;
-import com.mapper.model.output.OutputProperty;
+import com.mapper.model.output.OutputValuation;
+import com.mapper.testdata.OutputValuationObjectMother;
+import com.mapper.testdata.ValuationObjectMother;
 import org.junit.Test;
-
-import java.util.Collections;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,10 +13,9 @@ public class ManualMapperTest {
 
     @Test
     public void mapProperty() {
-        OutputProperty mappedProperty = manualMapper.map(new Property(PropertyType.APARTMENT, new Address(), Collections.emptyList()));
+        OutputValuation mappedValuation = manualMapper.map(ValuationObjectMother.createValuation());
 
-        assertThat(mappedProperty)
-                .extracting("type")
-                .contains("APARTMENT");
+        assertThat(mappedValuation).isEqualTo(OutputValuationObjectMother.createOutputValuation());
     }
+
 }

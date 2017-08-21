@@ -44,13 +44,13 @@ data class Estimate(
 )
 
 data class Amount(
-        var varueInCents: BigDecimal?,
+        var valueInCents: BigDecimal?,
         var currency: String? = null
 )
 
 data class Risk(
         var name: String?,
-        var varue: Int?
+        var value: Int?
 )
 
 data class Contact(

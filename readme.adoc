@@ -60,6 +60,7 @@ Current solutions build are:
 |Orika | - |- |- |- |- |- |-|-|-
 |ModelMapper | - |- |- |- |- |- |-|-|-
 |MapStruct | - |- |- |- |- |- |-|-|-
+|Selma | - |- |- |- |- |- |-|-|-
 
 |===
 
@@ -69,3 +70,8 @@ See https://stackoverflow.com/questions/1432764/any-tool-for-java-object-to-obje
 == Testing
 
 How to test that all mappings have been correctly applied?
+
+Idea:
+
+* Serialize JSON with GSON and then use https://github.com/lukas-krecan/JsonUnit ?
+* https://github.com/skyscreamer/JSONassert
