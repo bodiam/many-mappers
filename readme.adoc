@@ -54,13 +54,14 @@ Current solutions build are:
 |===
 |Name | Simple | Diff name |Diff type | Deep mapping | Coll to non coll | Non coll to coll |Cents to dollars | Reference data | Date conversion
 
-|By hand | - |- |- |- |- |- |-|-|-
-|Spring PropertyEditors | - |- |- |- |- |- |-|-|-
-|Dozer | - |- |- |- |- |- |-|-|-
-|Orika | - |- |- |- |- |- |-|-|-
-|ModelMapper | - |- |- |- |- |- |-|-|-
-|MapStruct | - |- |- |- |- |- |-|-|-
-|Selma | - |- |- |- |- |- |-|-|-
+|By hand                   | x | x | x | x | x | x | x | x | x
+|By hand (100% functional) | - | - | - | - | - | - | - | - | -
+|Dozer                     | - | - | - | - | - | - | - | - | -
+|Orika                     | - | - | - | - | - | - | - | - | -
+|ModelMapper               | - | - | - | - | - | - | - | - | -
+|MapStruct                 | - | - | - | - | - | - | - | - | -
+|Selma                     | - | - | - | - | - | - | - | - | -
+|Spring PropertyEditors?   | - | - | - | - | - | - | - | - | -
 
 |===
 
