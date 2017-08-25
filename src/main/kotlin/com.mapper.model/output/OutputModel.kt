@@ -1,6 +1,7 @@
 package com.mapper.model.output
 
 import java.math.BigDecimal
+import java.time.LocalDateTime
 
 data class OutputValuation(
         var reference: String? = null,
@@ -10,7 +11,8 @@ data class OutputValuation(
         var dateCreated: String? = null,
         var risks: List<OutputRisk>? = null,
         var buyer: OutputContact? = null,
-        var seller: OutputContact? = null
+        var seller: OutputContact? = null,
+        var appointment: OutputAppointment? = null
 )
 
 data class OutputRisk(
@@ -42,4 +44,10 @@ data class OutputAddress(
 data class OutputContact(
         var name: String? = null,
         var role: String? = null
+)
+
+data class OutputAppointment(
+        var instructions: String? = null,
+        var dateTime: LocalDateTime? = null,
+        var contactNumber: String? = null
 )

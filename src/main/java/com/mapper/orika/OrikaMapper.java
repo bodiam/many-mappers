@@ -12,7 +12,6 @@ import ma.glasnost.orika.impl.DefaultMapperFactory;
 import ma.glasnost.orika.metadata.Type;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -39,6 +38,7 @@ public class OrikaMapper {
         converterFactory.registerConverter(new LocalDateTimeToLocalDateConverter());
         converterFactory.registerConverter(new BooleanToYesNoConverter());
         converterFactory.registerConverter(new PropertyTypeConverter());
+//        converterFactory.registerConverter(new AppointmentConverter());
         converterFactory.registerConverter(new FullAddressConverter());
         converterFactory.registerConverter(new AmountInCentstoDollarConverter());
         converterFactory.registerConverter("buyerRole", new RoleConverter("buyer"));
@@ -84,6 +84,7 @@ public class OrikaMapper {
             return new OutputAmount(source.getValueInCents().divide(new BigDecimal(100)), source.getCurrency());
         }
     }
+
     private class RoleConverter extends CustomConverter<List<Contact>, OutputContact> {
 
         private String role;

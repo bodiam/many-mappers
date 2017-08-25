@@ -1,6 +1,7 @@
 package com.mapper.mapstruct;
 
 
+import com.mapper.mapstruct.helper.*;
 import com.mapper.model.input.*;
 import com.mapper.model.output.*;
 import org.mapstruct.Mapper;
@@ -15,13 +16,15 @@ public interface ValuationMapper {
 
     ValuationMapper INSTANCE = Mappers.getMapper(ValuationMapper.class);
 
-
     @Mappings({
             @Mapping(source = "supplier", target = "supplierCode"),
-            @Mapping(target = "buyer", source = "contacts", qualifiedBy = Buyer.class),
-            @Mapping(target = "seller", source = "contacts", qualifiedBy = Seller.class),
+            @Mapping(source = "contacts", target = "buyer", qualifiedBy = Buyer.class),
+            @Mapping(source = "contacts", target = "seller", qualifiedBy = Seller.class),
             @Mapping(target = "dateCreated", dateFormat = "yyyy-MM-dd"),
-            @Mapping(target= "premium", expression = "java(valuation.getPremium() == true ? \"Y\" : \"N\")")
+            @Mapping(target = "premium", expression = "java(valuation.getPremium() == true ? \"Y\" : \"N\")"),
+            @Mapping(source = "appointmentInstructions", target = "appointment.instructions"),
+            @Mapping(source = "appointmentDateTime", target = "appointment.dateTime"),
+            @Mapping(source = "appointmentContactNumber", target = "appointment.contactNumber")
     })
     OutputValuation map(Valuation valuation);
 
@@ -29,8 +32,8 @@ public interface ValuationMapper {
     OutputProperty map(Property property);
 
     @Mappings({
-            @Mapping(target = "fullAddress", source="address", qualifiedBy = AddressAnnotation.class),
-            @Mapping(target = "country", source="country" , qualifiedBy = Iso3Country.class)
+            @Mapping(target = "fullAddress", source = "address", qualifiedBy = AddressAnnotation.class),
+            @Mapping(target = "country", source = "country", qualifiedBy = Iso3Country.class)
     })
     OutputAddress map(Address address);
 
@@ -42,8 +45,10 @@ public interface ValuationMapper {
 
     OutputContact map(Contact contact);
 
-    @Mapping( target = "valueInDollar", expression = "java(amount.getValueInCents().divide(new java.math.BigDecimal(100)))")
+    @Mapping(target = "valueInDollar", expression = "java(amount.getValueInCents().divide(new java.math.BigDecimal(100)))")
     OutputAmount map(Amount amount);
 
     OutputRisk map(Risk risk);
+
+
 }

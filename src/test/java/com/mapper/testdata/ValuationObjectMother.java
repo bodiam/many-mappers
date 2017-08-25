@@ -20,7 +20,10 @@ public class ValuationObjectMother {
                 null,
                 LocalDateTime.of(2010, 10, 3, 4, 55),
                 Collections.emptyList(),
-                Collections.emptyList()
+                Collections.emptyList(),
+                "last house on the left",
+                null,
+                null
         );
     }
 
@@ -68,7 +71,10 @@ public class ValuationObjectMother {
                                 "diana",
                                 "seller"
                         )
-                )
+                ),
+                "please use the left door",
+                LocalDateTime.of(2015, 11, 1, 4, 55),
+                "0123456789"
         );
 
     }

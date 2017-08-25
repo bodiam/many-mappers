@@ -1,4 +1,4 @@
-package com.mapper.mapstruct;
+package com.mapper.mapstruct.helper;
 
 import org.mapstruct.Qualifier;
 
@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Qualifier
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.SOURCE)
-public @interface AddressAnnotation {
+public @interface Buyer {
 }

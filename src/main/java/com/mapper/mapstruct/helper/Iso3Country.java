@@ -1,4 +1,4 @@
-package com.mapper.mapstruct;
+package com.mapper.mapstruct.helper;
 
 import org.mapstruct.Qualifier;
 

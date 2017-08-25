@@ -1,4 +1,4 @@
-package com.mapper.mapstruct;
+package com.mapper.mapstruct.helper;
 
 import com.mapper.db.CountryRepository;
 import com.mapper.model.input.Country;

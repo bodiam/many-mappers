@@ -1,4 +1,4 @@
-package com.mapper.mapstruct;
+package com.mapper.mapstruct.helper;
 
 import com.mapper.model.input.Contact;
 import com.mapper.model.output.OutputContact;

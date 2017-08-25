@@ -29,8 +29,16 @@ public class ManualMapper {
                 valuation.getDateCreated().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                 createRisks(valuation),
                 getByRole(valuation.getContacts(), "buyer"),
-                getByRole(valuation.getContacts(), "seller")
+                getByRole(valuation.getContacts(), "seller"),
+                createAppointment(valuation)
+        );
+    }
 
+    private OutputAppointment createAppointment(Valuation valuation) {
+        return new OutputAppointment(
+                valuation.getAppointmentInstructions(),
+                valuation.getAppointmentDateTime(),
+                valuation.getAppointmentContactNumber()
         );
     }
 
