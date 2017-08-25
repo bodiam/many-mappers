@@ -1,17 +1,21 @@
 package com.mapper.model.output
 
 import java.math.BigDecimal
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 data class OutputValuation(
         var reference: String? = null,
         var supplierCode: String? = null,
         var premium: String? = null,
         var property: OutputProperty? = null,
-        var dateCreated: LocalDate? = null,
+        var dateCreated: String? = null,
         var risks: List<OutputRisk>? = null,
         var buyer: OutputContact? = null,
-        var seller: OutputContact? = null
+        var seller: OutputContact? = null,
+        var appointment: OutputAppointment? = null,
+        var billingContact: String? = null,
+        var billingPaymentType: String? = null,
+        var accountNumber: String? = null
 )
 
 data class OutputRisk(
@@ -31,8 +35,8 @@ data class OutputEstimate(
 )
 
 data class OutputAmount(
-        var valueInDollar: BigDecimal?,
-        var currency: String?
+        var valueInDollar: BigDecimal? = null,
+        var currency: String? = null
 )
 
 data class OutputAddress(
@@ -43,4 +47,10 @@ data class OutputAddress(
 data class OutputContact(
         var name: String? = null,
         var role: String? = null
+)
+
+data class OutputAppointment(
+        var instructions: String? = null,
+        var dateTime: LocalDateTime? = null,
+        var contactNumber: String? = null
 )

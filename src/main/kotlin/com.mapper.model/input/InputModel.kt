@@ -10,7 +10,11 @@ data class Valuation(
         var property: Property? = null,
         var dateCreated: LocalDateTime? = null,
         var risks: List<Risk>? = null,
-        var contacts: List<Contact>? = null
+        var contacts: List<Contact>? = null,
+        var appointmentInstructions: String? = null,
+        var appointmentDateTime: LocalDateTime? = null,
+        var appointmentContactNumber: String? = null,
+        var billingDetails: Billing? = null
 )
 
 data class Property(
@@ -56,4 +60,10 @@ data class Risk(
 data class Contact(
         var name: String? = null,
         var role: String? = null
+)
+
+data class Billing(
+        var name: String? = null,
+        var paymentType: String? = null,
+        var account: String? = null
 )

@@ -3,7 +3,7 @@ package com.mapper.testdata;
 import com.mapper.model.output.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -15,8 +15,16 @@ public class OutputValuationObjectMother {
                 "supplier",
                 "Y",
                 null,
-                LocalDate.of(2010, 10, 3),
+                "2010-10-03",
                 Collections.emptyList(),
+                null,
+                null,
+                new OutputAppointment(
+                        "last house on the left",
+                        null,
+                        null
+                ),
+                null,
                 null,
                 null
         );
@@ -45,7 +53,7 @@ public class OutputValuationObjectMother {
                                 )
                         )
                 ),
-                LocalDate.of(2010, 10, 3),
+                "2010-10-03",
                 Arrays.asList(
                         new OutputRisk(
                                 "fire",
@@ -59,7 +67,15 @@ public class OutputValuationObjectMother {
                 new OutputContact(
                         "diana",
                         "seller"
-                )
+                ),
+                new OutputAppointment(
+                        "please use the left door",
+                        LocalDateTime.of(2015, 11, 1, 4, 55),
+                        "0123456789"
+                ),
+                "rick",
+                "credit card",
+                "1234 5678 9012 4444"
         );
 
     }

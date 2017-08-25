@@ -1,14 +1,12 @@
 package com.mapper.manual;
 
 import com.mapper.db.CountryRepository;
-import com.mapper.model.input.Address;
-import com.mapper.model.input.Contact;
-import com.mapper.model.input.Property;
-import com.mapper.model.input.Valuation;
+import com.mapper.model.input.*;
 import com.mapper.model.output.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -20,16 +18,29 @@ public class ManualMapper {
 
     public OutputValuation map(Valuation valuation) {
 
+        Billing billingDetails = valuation.getBillingDetails();
+
         return new OutputValuation(
                 valuation.getReference(),
                 valuation.getSupplier(),
                 valuation.getPremium() == TRUE ? "Y" : "N",
                 createProperty(valuation.getProperty()),
-                valuation.getDateCreated().toLocalDate(),
+                valuation.getDateCreated().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                 createRisks(valuation),
                 getByRole(valuation.getContacts(), "buyer"),
-                getByRole(valuation.getContacts(), "seller")
+                getByRole(valuation.getContacts(), "seller"),
+                createAppointment(valuation),
+                billingDetails.getName(),
+                billingDetails.getPaymentType(),
+                billingDetails.getAccount()
+        );
+    }
 
+    private OutputAppointment createAppointment(Valuation valuation) {
+        return new OutputAppointment(
+                valuation.getAppointmentInstructions(),
+                valuation.getAppointmentDateTime(),
+                valuation.getAppointmentContactNumber()
         );
     }
 

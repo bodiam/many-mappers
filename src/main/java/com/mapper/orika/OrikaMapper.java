@@ -12,8 +12,8 @@ import ma.glasnost.orika.impl.DefaultMapperFactory;
 import ma.glasnost.orika.metadata.Type;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,6 +24,12 @@ public class OrikaMapper {
     public OrikaMapper() {
         mapperFactory.classMap(Valuation.class, OutputValuation.class)
                 .field("supplier", "supplierCode")
+                .field("billingDetails.name", "billingContact")
+                .field("billingDetails.paymentType", "billingPaymentType")
+                .field("billingDetails.account", "accountNumber")
+                .field("appointmentInstructions", "appointment.instructions")
+                .field("appointmentDateTime", "appointment.dateTime")
+                .field("appointmentContactNumber", "appointment.contactNumber")
                 .fieldMap("contacts", "buyer").converter("buyerRole").add()
                 .fieldMap("contacts", "seller").converter("sellerRole").add()
                 .byDefault()
@@ -46,10 +52,10 @@ public class OrikaMapper {
 
 
 
-    private class LocalDateTimeToLocalDateConverter extends CustomConverter<LocalDateTime, LocalDate> {
+    private class LocalDateTimeToLocalDateConverter extends CustomConverter<LocalDateTime, String> {
         @Override
-        public LocalDate convert(LocalDateTime source, Type<? extends LocalDate> destinationType, MappingContext mappingContext) {
-            return source.toLocalDate();
+        public String convert(LocalDateTime source, Type<? extends String> destinationType, MappingContext mappingContext) {
+            return source.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         }
     }
 
@@ -83,6 +89,7 @@ public class OrikaMapper {
             return new OutputAmount(source.getValueInCents().divide(new BigDecimal(100)), source.getCurrency());
         }
     }
+
     private class RoleConverter extends CustomConverter<List<Contact>, OutputContact> {
 
         private String role;

@@ -28,6 +28,11 @@ Examples for this are:
   ** (Amount.valueInCents vs Amount.valueInDollars)
 - Date conversion
   ** (Valuation.dateCreated)
+- Flat to hierarchy (F2H) (some properties which need to be mapped to a different class)
+  ** Valuation.appointment properties to Appointment
+- Hierarchy to flat (H2F) (properties in a different class are mapped to a flat)
+  ** Valuation.billing to Outputvaluation properties
+
 
 *Ideas - not yet implemented*
 
@@ -52,15 +57,15 @@ Current solutions build are:
 
 .Demo
 |===
-|Name | Simple | Diff name |Diff type | Deep mapping | Coll to non coll | Non coll to coll |Cents to dollars | Reference data | Date conversion
+|Name | Simple | Diff name |Diff type | Deep mapping | Coll to non coll | Non coll to coll |Cents to dollars | Reference data | Date conversion | F2H | H2F
 
-|By hand                   | x | x | x | x | x | x | x | x | x
-|Orika                     | x | x | x | x | ! | x | x | x | x // <1>
-|Dozer                     | - | - | - | - | - | - | - | - | -
-|ModelMapper               | - | - | - | - | - | - | - | - | -
-|MapStruct                 | - | - | - | - | - | - | - | - | -
-|Selma                     | - | - | - | - | - | - | - | - | -
-|Spring PropertyEditors?   | - | - | - | - | - | - | - | - | -
+|By hand                   | x | x | x | x | x | x | x | x | x | x | x
+|Orika                     | x | x | x | x | ! | x | x | x | x // <1> | -
+|Dozer                     | - | - | - | - | - | - | - | - | - | - | -
+|ModelMapper               | - | - | - | - | - | - | - | - | - | - | -
+|MapStruct                 | x | x | x | x | x | x | x | x | x | x | x
+|Selma                     | - | - | - | - | - | - | - | - | - | - | -
+|Spring PropertyEditors?   | - | - | - | - | - | - | - | - | - | - | -
 
 |===
 <1> Orika doesn't seem to like collection to non-collection mapping. See the note in the test.
