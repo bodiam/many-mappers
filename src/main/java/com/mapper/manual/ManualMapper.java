@@ -9,6 +9,7 @@ import com.mapper.model.output.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class ManualMapper {
                 valuation.getSupplier(),
                 valuation.getPremium() == TRUE ? "Y" : "N",
                 createProperty(valuation.getProperty()),
-                valuation.getDateCreated().toLocalDate(),
+                valuation.getDateCreated().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                 createRisks(valuation),
                 getByRole(valuation.getContacts(), "buyer"),
                 getByRole(valuation.getContacts(), "seller")

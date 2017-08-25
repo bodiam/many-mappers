@@ -15,7 +15,7 @@ public class OutputValuationObjectMother {
                 "supplier",
                 "Y",
                 null,
-                LocalDate.of(2010, 10, 3),
+                "2010-10-03",
                 Collections.emptyList(),
                 null,
                 null
@@ -45,7 +45,7 @@ public class OutputValuationObjectMother {
                                 )
                         )
                 ),
-                LocalDate.of(2010, 10, 3),
+                "2010-10-03",
                 Arrays.asList(
                         new OutputRisk(
                                 "fire",
