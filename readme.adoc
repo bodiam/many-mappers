@@ -28,6 +28,11 @@ Examples for this are:
   ** (Amount.valueInCents vs Amount.valueInDollars)
 - Date conversion
   ** (Valuation.dateCreated)
+- Flat to hierarchy (some properties which need to be mapped to a different class)
+  ** Valuation.appointment properties to Appointment
+- Hierarchy to flat (properties in a different class are mapped to a flat)
+  ** Valuation.billing to Outputvaluation properties
+
 
 *Ideas - not yet implemented*
 
@@ -52,13 +57,13 @@ Current solutions build are:
 
 .Demo
 |===
-|Name | Simple | Diff name |Diff type | Deep mapping | Coll to non coll | Non coll to coll |Cents to dollars | Reference data | Date conversion | Flat to Hierarchy
+|Name | Simple | Diff name |Diff type | Deep mapping | Coll to non coll | Non coll to coll |Cents to dollars | Reference data | Date conversion | Flat to Hierarchy |
 
 |By hand                   | x | x | x | x | x | x | x | x | x | -
 |Orika                     | x | x | x | x | ! | x | x | x | x // <1> | -
 |Dozer                     | - | - | - | - | - | - | - | - | - | -
 |ModelMapper               | - | - | - | - | - | - | - | - | - | -
-|MapStruct                 | - | - | - | - | - | - | - | - | - | -
+|MapStruct                 | x | x | x | x | x | x | x | x | x | -
 |Selma                     | - | - | - | - | - | - | - | - | - | -
 |Spring PropertyEditors?   | - | - | - | - | - | - | - | - | - | -
 

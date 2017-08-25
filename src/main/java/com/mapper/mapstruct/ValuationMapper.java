@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {PropertyTypeMapper.class, ContactIterableUtil.class, Iso3ToFullCountryUtil.class, AddressUtil.class})
 public interface ValuationMapper {
 
     ValuationMapper INSTANCE = Mappers.getMapper(ValuationMapper.class);
@@ -18,8 +18,8 @@ public interface ValuationMapper {
 
     @Mappings({
             @Mapping(source = "supplier", target = "supplierCode"),
-            @Mapping(target = "buyer", ignore = true),
-            @Mapping(target = "seller", ignore = true),
+            @Mapping(target = "buyer", source = "contacts", qualifiedBy = Buyer.class),
+            @Mapping(target = "seller", source = "contacts", qualifiedBy = Seller.class),
             @Mapping(target = "dateCreated", dateFormat = "yyyy-MM-dd"),
             @Mapping(target= "premium", expression = "java(valuation.getPremium() == true ? \"Y\" : \"N\")")
     })
@@ -28,7 +28,10 @@ public interface ValuationMapper {
     @Mappings({@Mapping(source = "propertyType", target = "type")})
     OutputProperty map(Property property);
 
-    @Mapping(target = "fullAddress", expression = "java(address.getUnitNumber() + \" \" + address.getStreetName() + \" \" + address.getZipCode() + \" \" + address.getState())")
+    @Mappings({
+            @Mapping(target = "fullAddress", source="address", qualifiedBy = AddressAnnotation.class),
+            @Mapping(target = "country", source="country" , qualifiedBy = Iso3Country.class)
+    })
     OutputAddress map(Address address);
 
     List<OutputEstimate> mapEstimates(List<Estimate> estimates);

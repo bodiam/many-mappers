@@ -17,4 +17,10 @@ public class MapstructTest {
         OutputValuation outputValuation = ValuationMapper.INSTANCE.map(basicValuation);
         assertThat(outputValuation).isEqualTo(OutputValuationObjectMother.createBasicValuation());
     }
+    @Test
+    public void testComplexMap() {
+        Valuation valuation = ValuationObjectMother.createValuation();
+        OutputValuation outputValuation = ValuationMapper.INSTANCE.map(valuation);
+        assertThat(outputValuation).isEqualTo(OutputValuationObjectMother.createOutputValuation());
+    }
 }
