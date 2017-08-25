@@ -9,10 +9,12 @@ import fr.xebia.extras.selma.Mapper;
 /**
  * Created by yangliu on 25/08/2017.
  */
-@Mapper(withIgnoreFields = {"property", "risks", "contacts"},
+@Mapper(withIgnoreFields = {"property"},
         withIgnoreMissing = IgnoreMissing.SOURCE,
         withCustomFields = {
-                @Field({"supplier", "supplierCode"})
+                @Field({"supplier", "supplierCode"}),
+                @Field(value = {"buyer", "contacts"}, withCustom = BuyerCustomMapper.class),
+                @Field(value = {"seller", "contacts"}, withCustom = SellerCustomMapper.class)
         },
         withCustom = {
                 LocalDateCustomMapper.class,

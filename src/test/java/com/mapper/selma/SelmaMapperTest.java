@@ -16,7 +16,7 @@ public class SelmaMapperTest {
     @Test
     public void test() {
         SelmaMapper mapper = Selma.builder(SelmaMapper.class).build();
-        OutputValuation outputValuation = mapper.asValuation(ValuationObjectMother.createBasicValuation());
-        assertThat(outputValuation).isEqualTo(OutputValuationObjectMother.createBasicValuation());
+        OutputValuation outputValuation = mapper.asValuation(ValuationObjectMother.createValuation());
+        assertThat(outputValuation).isEqualTo(OutputValuationObjectMother.createOutputValuation());
     }
 }
