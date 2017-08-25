@@ -14,8 +14,10 @@ import fr.xebia.extras.selma.Mapper;
         withCustomFields = {
                 @Field({"supplier", "supplierCode"})
         },
-        withCustom = LocalDateCustomMapper.class
-
+        withCustom = {
+                LocalDateCustomMapper.class,
+                BooleanCustomMapper.class
+        }
 )
 public interface SelmaMapper {
     OutputValuation asValuation(Valuation valuation);
