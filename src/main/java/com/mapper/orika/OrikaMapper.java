@@ -24,6 +24,12 @@ public class OrikaMapper {
     public OrikaMapper() {
         mapperFactory.classMap(Valuation.class, OutputValuation.class)
                 .field("supplier", "supplierCode")
+                .field("billingDetails.name", "billingContact")
+                .field("billingDetails.paymentType", "billingPaymentType")
+                .field("billingDetails.account", "accountNumber")
+                .field("appointmentInstructions", "appointment.instructions")
+                .field("appointmentDateTime", "appointment.dateTime")
+                .field("appointmentContactNumber", "appointment.contactNumber")
                 .fieldMap("contacts", "buyer").converter("buyerRole").add()
                 .fieldMap("contacts", "seller").converter("sellerRole").add()
                 .byDefault()
@@ -38,7 +44,6 @@ public class OrikaMapper {
         converterFactory.registerConverter(new LocalDateTimeToLocalDateConverter());
         converterFactory.registerConverter(new BooleanToYesNoConverter());
         converterFactory.registerConverter(new PropertyTypeConverter());
-//        converterFactory.registerConverter(new AppointmentConverter());
         converterFactory.registerConverter(new FullAddressConverter());
         converterFactory.registerConverter(new AmountInCentstoDollarConverter());
         converterFactory.registerConverter("buyerRole", new RoleConverter("buyer"));

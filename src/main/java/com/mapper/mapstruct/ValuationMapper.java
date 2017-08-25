@@ -24,7 +24,10 @@ public interface ValuationMapper {
             @Mapping(target = "premium", expression = "java(valuation.getPremium() == true ? \"Y\" : \"N\")"),
             @Mapping(source = "appointmentInstructions", target = "appointment.instructions"),
             @Mapping(source = "appointmentDateTime", target = "appointment.dateTime"),
-            @Mapping(source = "appointmentContactNumber", target = "appointment.contactNumber")
+            @Mapping(source = "appointmentContactNumber", target = "appointment.contactNumber"),
+            @Mapping(source = "billingDetails.name", target = "billingContact"),
+            @Mapping(source = "billingDetails.paymentType", target = "billingPaymentType"),
+            @Mapping(source = "billingDetails.account", target = "accountNumber")
     })
     OutputValuation map(Valuation valuation);
 

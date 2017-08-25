@@ -1,10 +1,7 @@
 package com.mapper.manual;
 
 import com.mapper.db.CountryRepository;
-import com.mapper.model.input.Address;
-import com.mapper.model.input.Contact;
-import com.mapper.model.input.Property;
-import com.mapper.model.input.Valuation;
+import com.mapper.model.input.*;
 import com.mapper.model.output.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,6 +18,8 @@ public class ManualMapper {
 
     public OutputValuation map(Valuation valuation) {
 
+        Billing billingDetails = valuation.getBillingDetails();
+
         return new OutputValuation(
                 valuation.getReference(),
                 valuation.getSupplier(),
@@ -30,7 +29,10 @@ public class ManualMapper {
                 createRisks(valuation),
                 getByRole(valuation.getContacts(), "buyer"),
                 getByRole(valuation.getContacts(), "seller"),
-                createAppointment(valuation)
+                createAppointment(valuation),
+                billingDetails.getName(),
+                billingDetails.getPaymentType(),
+                billingDetails.getAccount()
         );
     }
 

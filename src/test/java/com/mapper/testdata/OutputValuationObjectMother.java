@@ -23,7 +23,10 @@ public class OutputValuationObjectMother {
                         "last house on the left",
                         null,
                         null
-                )
+                ),
+                null,
+                null,
+                null
         );
     }
 
@@ -69,8 +72,10 @@ public class OutputValuationObjectMother {
                         "please use the left door",
                         LocalDateTime.of(2015, 11, 1, 4, 55),
                         "0123456789"
-                )
-
+                ),
+                "rick",
+                "credit card",
+                "1234 5678 9012 4444"
         );
 
     }

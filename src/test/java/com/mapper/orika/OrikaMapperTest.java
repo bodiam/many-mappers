@@ -17,10 +17,6 @@ public class OrikaMapperTest {
 
         OutputValuation outputValuation = mapper.map(ValuationObjectMother.createBasicValuation());
         OutputValuation expectedValuation = OutputValuationObjectMother.createBasicValuation();
-
-        // BUG: Couldn't convince Orika to convert multiple properties into 1 target class
-        expectedValuation.setAppointment(null);
-
         assertThat(outputValuation).isEqualTo(expectedValuation);
 
     }
@@ -35,9 +31,6 @@ public class OrikaMapperTest {
         outputValuation.setSeller(new OutputContact("diana", "seller"));
 
         OutputValuation expectedValuation = OutputValuationObjectMother.createOutputValuation();
-        // BUG: Couldn't convince Orika to convert multiple properties into 1 target class
-        expectedValuation.setAppointment(null);
-
         assertThat(outputValuation).isEqualTo(expectedValuation);
 
     }

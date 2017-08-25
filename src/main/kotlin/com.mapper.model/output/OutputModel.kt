@@ -12,7 +12,10 @@ data class OutputValuation(
         var risks: List<OutputRisk>? = null,
         var buyer: OutputContact? = null,
         var seller: OutputContact? = null,
-        var appointment: OutputAppointment? = null
+        var appointment: OutputAppointment? = null,
+        var billingContact: String? = null,
+        var billingPaymentType: String? = null,
+        var accountNumber: String? = null
 )
 
 data class OutputRisk(
