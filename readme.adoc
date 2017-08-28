@@ -60,7 +60,7 @@ Current solutions build are:
 |Name | Simple | Diff name |Diff type | Deep mapping | Coll to non coll | Non coll to coll |Cents to dollars | Reference data | Date conversion | F2H | H2F
 
 |By hand                   | x | x | x | x | x | x | x | x | x | x | x
-|Orika                     | x | x | x | x | ! | x | x | x | x // <1> | -
+|Orika                     | x | x | x | x | ! | x | x | x | x // <1> | - | -
 |Dozer                     | - | - | - | - | - | - | - | - | - | - | -
 |ModelMapper               | - | - | - | - | - | - | - | - | - | - | -
 |MapStruct                 | x | x | x | x | x | x | x | x | x | x | x
